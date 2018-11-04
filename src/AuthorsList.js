@@ -14,6 +14,12 @@ class AuthorsList extends Component {
     this.filterAuthors = this.filterAuthors.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.authors !== this.props.authors) {
+      this.setState({ filteredAuthors: this.props.authors });
+    }
+  }
+
   filterAuthors(query) {
     query = query.toLowerCase();
     let filteredAuthors = this.props.authors.filter(author => {
