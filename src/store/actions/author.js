@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const fetchAuthorDetail = authorID => {
   return dispatch => {
+    dispatch(setLoading());
     axios
       .get(`https://the-index-api.herokuapp.com/api/authors/${authorID}/`)
       .then(res => res.data)
@@ -14,3 +15,5 @@ export const fetchAuthorDetail = authorID => {
       );
   };
 };
+
+export const setLoading = () => ({ type: actionTypes.SET_LOADING });

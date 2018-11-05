@@ -1,6 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
-  author: {}
+  author: {},
+  loading: true
 };
 
 const authorReducer = (state = initialState, action) => {
@@ -8,7 +9,13 @@ const authorReducer = (state = initialState, action) => {
     case actionTypes.FETCH_AUTHOR_DETAIL:
       return {
         ...state,
-        author: action.payload
+        author: action.payload,
+        loading: false
+      };
+    case actionTypes.SET_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;

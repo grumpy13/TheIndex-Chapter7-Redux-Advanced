@@ -5,14 +5,6 @@ import * as actionCreators from "./store/actions/index";
 import { connect } from "react-redux";
 
 class AuthorDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-    this.getAuthor = this.getAuthor.bind(this);
-  }
-
   componentDidMount() {
     this.getAuthor();
   }
@@ -29,7 +21,7 @@ class AuthorDetail extends Component {
   }
 
   render() {
-    if (this.props.author.id != this.props.match.params.authorID) {
+    if (this.props.loading) {
       return <Loading />;
     } else {
       const author = this.props.author;
@@ -52,7 +44,8 @@ class AuthorDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    author: state.rootAuthor.author
+    author: state.rootAuthor.author,
+    loading: state.rootAuthor.loading
   };
 };
 const mapDispatchToProps = dispatch => {
