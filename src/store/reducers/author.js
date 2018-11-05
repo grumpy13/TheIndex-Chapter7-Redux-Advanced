@@ -1,11 +1,11 @@
+import * as actionTypes from "../actions/actionTypes";
 const initialState = {
-  author: [],
-  filteredAuthors: []
+  author: {}
 };
 
 const authorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_AUTHOR_DETAIL":
+    case actionTypes.FETCH_AUTHOR_DETAIL:
       return {
         ...state,
         author: action.payload

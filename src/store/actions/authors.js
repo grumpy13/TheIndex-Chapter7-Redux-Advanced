@@ -7,7 +7,6 @@ const instance = axios.create({
 
 export const fetchAuthors = () => {
   return dispatch => {
-    //This function gets called by Redux Thunk
     instance
       .get("/api/authors/")
       .then(res => res.data)
@@ -19,31 +18,9 @@ export const fetchAuthors = () => {
       );
   };
 };
-export const filterAuthors = () => {
-  return dispatch => {
-    instance
-      .get("/api/authors/")
-      .then(res => res.data)
-      .then(authors =>
-        dispatch({
-          type: actionTypes.FILTER_AUTHORS,
-          payload: authors
-        })
-      );
+export const filterAuthors = query => {
+  return {
+    type: actionTypes.FILTER_AUTHORS,
+    payload: query
   };
 };
-
-// fetchAllAuthors() {
-//     return instance.get("/api/authors/").then(res => res.data);
-//   }
-
-//   componentDidMount() {
-//     this.fetchAllAuthors()
-//       .then(authors =>
-//         this.setState({
-//           authors: authors,
-//           loading: false
-//         })
-//       )
-//       .catch(err => console.error(err));
-//   }

@@ -6,7 +6,6 @@ import App from "./App";
 import { applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { compose } from "redux";
-
 import { createStore, combineReducers } from "redux";
 import authorReducer from "./store/reducers/author";
 import authorsReducer from "./store/reducers/authors";
